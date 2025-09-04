@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <measurement.h>
+#include <QVector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +19,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void onSaveMeasurementClicked();
+    void onClearFormClicked();
+
 private:
     Ui::MainWindow *ui;
+
+    // Store measurements in memory
+    QVector<Measurement> measurements;
 };
 #endif // MAINWINDOW_H
