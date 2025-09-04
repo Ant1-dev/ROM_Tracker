@@ -216,6 +216,16 @@ QTableWidget::item:selected {
          </item>
          <item>
           <property name="text">
+           <string>Elbow</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Wrist</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
            <string>Hip</string>
           </property>
          </item>
