@@ -20,6 +20,8 @@ private slots:
     void onResetHistoryClicked();
     void filterTable(const QString &query);
     void onDeleteRowClicked(int row);
+    void onExportClicked();
+    void onImportClicked();
 
 private:
     Ui::MainWindow *ui;

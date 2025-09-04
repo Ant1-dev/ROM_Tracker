@@ -3,7 +3,9 @@
 #include <QMessageBox>
 #include <QHeaderView>
 #include <QDate>
+#include <QFileDialog>
 #include "../include/database.h"
+#include "include/fileManager.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -24,6 +26,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButtonResetHistory, &QPushButton::clicked,
             this, &MainWindow::onResetHistoryClicked);
 
+    connect(ui->pushButtonExport, &QPushButton::clicked,
+            this, &MainWindow::onExportClicked);
+
+    connect(ui->pushButtonImport, &QPushButton::clicked,
+            this, &MainWindow::onImportClicked);
 
 
     // Initialize table
@@ -211,4 +218,19 @@ void MainWindow::onDeleteRowClicked(int row)
     }
 }
 
+void MainWindow::onExportClicked() {
+    QString path = QFileDialog::getSaveFileName(this, "Save CSV", "","*.csv");
+    if (!path.isEmpty()) {
+            if (!FileManager::exportToCSV(path, measurements)) {
+                QMessageBox::warning(this, "Export Failed", "Could not save CSV.");
+            }
+        }
+}
 
+void MainWindow::onImportClicked() {
+    QString path = QFileDialog::getOpenFileName(this, "Open CSV", "", "*.csv");
+    if (path.isEmpty()) return;
+
+    FileManager::importFromCSV(path, db);
+    loadMeasurementsFromDB();
+}
