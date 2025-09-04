@@ -1,0 +1,116 @@
+/* Global defaults */
+QWidget {
+    background-color: #f9f9f9;
+    font-size: 13pt;
+    font-family: Arial, "Segoe UI", "Helvetica Neue";
+    color: #000;
+}
+
+/* Group boxes */
+QGroupBox {
+    font-weight: bold;
+    border: 1px solid gray;
+    border-radius: 6px;
+    margin-top: 10px;
+    padding: 6px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px;
+}
+
+/* Text inputs */
+QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: #ffffff;
+    color: #000;
+}
+QLineEdit:focus {
+    border: 1px solid #2d89ef;
+}
+
+/* Date picker */
+QDateEdit {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: #ffffff;
+    color: #000;
+}
+QDateEdit:focus {
+    border: 1px solid #2d89ef;
+}
+
+/* Number spinners */
+QSpinBox {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: #ffffff;
+    color: #000;
+}
+QSpinBox:focus {
+    border: 1px solid #2d89ef;
+}
+
+/* Dropdown menus */
+QComboBox {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: #ffffff;
+    color: #000;
+}
+QComboBox:focus {
+    border: 1px solid #2d89ef;
+}
+
+/* Dropdown menu list */
+QComboBox QAbstractItemView {
+    background-color: #ffffff;
+    color: #000;
+    selection-background-color: #2d89ef;
+    selection-color: white;
+    border: 1px solid #ccc;
+}
+
+/* All buttons */
+QPushButton {
+    background-color: #2d89ef;
+    color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+    border: none;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #1a5fb4;
+}
+QPushButton:pressed {
+    background-color: #104a85;
+}
+
+/* ROM result label */
+#labelROMValue {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #333333;
+}
+
+/* Table styling */
+QTableWidget {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    alternate-background-color: #f5f5f5;
+}
+QTableWidget::item {
+    padding: 4px;
+}
+QTableWidget::item:selected {
+    background-color: #2d89ef;
+    color: white;
+}

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>925</width>
-    <height>669</height>
+    <width>787</width>
+    <height>753</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -21,13 +21,15 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
-    <string notr="true">QWidget {
+    <string notr="true">/* Global defaults */
+QWidget {
     background-color: #f9f9f9;
-    font-size: 11pt;
-    font-family: &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Arial;
-	color: #000
+    font-size: 13pt;
+    font-family: Arial, &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;;
+    color: #000;
 }
 
+/* Group boxes */
 QGroupBox {
     font-weight: bold;
     border: 1px solid gray;
@@ -41,23 +43,71 @@ QGroupBox::title {
     padding: 0 5px;
 }
 
-QLineEdit, QDateEdit, QSpinBox {
+/* Text inputs */
+QLineEdit {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 4px;
     background-color: #ffffff;
-	color: #000
+    color: #000;
 }
-QLineEdit:focus, QDateEdit:focus, QSpinBox:focus {
+QLineEdit:focus {
     border: 1px solid #2d89ef;
-    outline: none;
 }
 
+/* Date picker */
+QDateEdit {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: #ffffff;
+    color: #000;
+}
+QDateEdit:focus {
+    border: 1px solid #2d89ef;
+}
+
+/* Number spinners */
+QSpinBox {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: #ffffff;
+    color: #000;
+}
+QSpinBox:focus {
+    border: 1px solid #2d89ef;
+}
+
+/* Dropdown menus */
+QComboBox {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: #ffffff;
+    color: #000;
+}
+QComboBox:focus {
+    border: 1px solid #2d89ef;
+}
+
+/* Dropdown menu list */
+QComboBox QAbstractItemView {
+    background-color: #ffffff;
+    color: #000;
+    selection-background-color: #2d89ef;
+    selection-color: white;
+    border: 1px solid #ccc;
+}
+
+/* All buttons */
 QPushButton {
     background-color: #2d89ef;
     color: white;
     border-radius: 6px;
     padding: 6px 12px;
+    border: none;
+    font-weight: bold;
 }
 QPushButton:hover {
     background-color: #1a5fb4;
@@ -66,14 +116,29 @@ QPushButton:pressed {
     background-color: #104a85;
 }
 
+/* ROM result label */
 #labelROMValue {
     font-size: 16pt;
     font-weight: bold;
     color: #333333;
 }
-</string>
+
+/* Table styling */
+QTableWidget {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    alternate-background-color: #f5f5f5;
+}
+QTableWidget::item {
+    padding: 4px;
+}
+QTableWidget::item:selected {
+    background-color: #2d89ef;
+    color: white;
+}</string>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0,1">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,2,3">
     <item>
      <widget class="QGroupBox" name="groupBoxPatientInfo">
       <property name="enabled">
@@ -94,7 +159,11 @@ QPushButton:pressed {
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEditName"/>
+        <widget class="QLineEdit" name="lineEditName">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="labelDate">
@@ -137,6 +206,9 @@ QPushButton:pressed {
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
          <item>
           <property name="text">
            <string>Knee</string>
@@ -159,7 +231,7 @@ QPushButton:pressed {
        <item row="2" column="1">
         <widget class="QSpinBox" name="spinBoxStartAngle">
          <property name="cursor">
-          <cursorShape>IBeamCursor</cursorShape>
+          <cursorShape>ArrowCursor</cursorShape>
          </property>
          <property name="suffix">
           <string> °</string>
@@ -179,7 +251,7 @@ QPushButton:pressed {
        <item row="4" column="1">
         <widget class="QSpinBox" name="spinBoxEndAngle">
          <property name="cursor">
-          <cursorShape>IBeamCursor</cursorShape>
+          <cursorShape>ArrowCursor</cursorShape>
          </property>
          <property name="suffix">
           <string> °</string>
@@ -202,8 +274,8 @@ QPushButton:pressed {
          </property>
          <property name="font">
           <font>
-           <family>Segoe UI</family>
-           <pointsize>11</pointsize>
+           <family>Arial</family>
+           <pointsize>13</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -225,8 +297,8 @@ QPushButton:pressed {
          </property>
          <property name="font">
           <font>
-           <family>Segoe UI</family>
-           <pointsize>11</pointsize>
+           <family>Arial</family>
+           <pointsize>13</pointsize>
            <bold>true</bold>
           </font>
          </property>
@@ -247,8 +319,62 @@ QPushButton:pressed {
        <string>Results</string>
       </property>
       <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelROMText">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>ROM (degrees):</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="labelROMValue">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>16</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0 °</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="pushButtonResetHistory">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>13</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string>Clear History</string>
+         </property>
+        </widget>
+       </item>
        <item row="1" column="0">
+        <widget class="QGroupBox" name="groupBoxSearch">
+         <property name="title">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
         <widget class="QTableWidget" name="tableWidgetHistory">
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+         </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>
@@ -287,33 +413,6 @@ QPushButton:pressed {
          </column>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="labelROMText">
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>ROM (degrees):</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="labelROMValue">
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>16</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>0 °</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </item>
@@ -324,8 +423,8 @@ QPushButton:pressed {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>925</width>
-     <height>42</height>
+     <width>787</width>
+     <height>24</height>
     </rect>
    </property>
   </widget>
