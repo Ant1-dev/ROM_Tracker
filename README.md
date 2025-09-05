@@ -14,7 +14,6 @@
 6. [Database](#database)
 7. [File Import/Export](#file-importexport)
 8. [Project Structure](#project-structure)
-9. [Screenshot](#screenshot)
 
 ---
 
